@@ -1,6 +1,6 @@
 import time
 
-start = time.time()
+
 n = int(input())
 
 row = 1
@@ -10,6 +10,7 @@ col = 1
 
 direction = list(map(str, input().split()))
 
+start = time.time()
 for i in range(len(direction)):
     if(direction[i] == "R"):
         col += 1
