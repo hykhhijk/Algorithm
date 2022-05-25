@@ -1,4 +1,5 @@
 import sys
+import math
 
 n,m = list(map(int, input().split()))
 
@@ -8,10 +9,12 @@ for i in range(n):
     result.append(0)
 
 for i in range(n, m+1):
-    result.append(i)
-
+    if i==1 or i==2:
+        result.append(0)
+    else:
+        result.append(i)
 for i in range(n, m+1):
-    for j in range(2, i//2+1):
+    for j in range(2, int(math.sqrt(i))+1):
         if i%j == 0:
             result[i]=0
             break
