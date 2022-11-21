@@ -1,28 +1,24 @@
-n = int(input())
-m = int(input())
+node = int(input())
+edge = int(input())
+num=0
 
+graph = [[]for _ in range(node+1)]
+visited=[False]* (node+1)
 
-graph=[[] for _ in range(n+1)]
-count = 0
-visited = [False]*(n+1)
+for i in range(edge):
+    start, end = map(int, input().split())
+    graph[start].append(end)
+    graph[end].append(start)
 
+    
 
-for i in range(m):
-    j, k = map(int, input().split())
-    graph[j].append(k)
-    graph[k].append(j)
+def dfs(graph, start, visited):
+    global num
+    visited[start] = True
+    num = num+1
+    for i in graph[start]:
+        if not visited[i]:
+            dfs(graph, i, visited)
 
-def dfs(node):
-    global count
-    visited[node] =True
-    if not graph[node]:
-        return False
-    for i in graph[node]:
-        if visited[i] == False:
-            dfs(i)
-            count +=1
-
-
-
-dfs(1)
-print(count)
+dfs(graph,1,visited)
+print(num-1)
