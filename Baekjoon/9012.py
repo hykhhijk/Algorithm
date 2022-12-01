@@ -1,22 +1,19 @@
-n = int(input())
+import sys
 
+n = int(sys.stdin.readline().strip())
 
-result = [0]*n
-for i in range(n):
-    mat = input()
-    for j in range(len(mat)):
-        if mat[j] == "(":
-            result[i] += 1
-        elif mat[j] == ")" :
-            if result[i] <= 0:
-                result[i] -= 1
+for _ in range(n):
+    result=0
+    expr = sys.stdin.readline().strip()
+    for i in expr:
+        if i=="(":
+            result+=1
+        elif i==")":
+            result-=1
+            if result <0:
+                print("NO")
                 break
-            else:
-                result[i] -= 1
-
-for i in range(n):
-    if result[i] == 0:
+    if result==0:
         print("YES")
-    else:
+    elif result>0:
         print("NO")
-            
