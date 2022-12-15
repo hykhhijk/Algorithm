@@ -1,16 +1,12 @@
 n = int(input())
 
 
-result = 0
-
-def fibonacci(n):  
-    if n == 0:
+def fibo(x):
+    if x==0:
         return 0
-    elif n==1:
+    elif x==1:
         return 1
     else:
-        return fibonacci(n-2) + fibonacci(n-1)
-        
+        return fibo(x-1) + fibo(x-2)
 
-
-print(fibonacci(n))
+print(fibo(n))
