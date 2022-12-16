@@ -13,7 +13,4 @@ def hanoi(n, start, end):
         hanoi(n-1, move, end)
 
 print(2**n-1)
-if n > 20:
-    pass
-else:
-    hanoi(n, 1, 3)
+hanoi(n, 1, 3)

@@ -10,32 +10,22 @@ blue=0
 def recursive(row, col, m):
     global white
     global blue
-    if m==0:
-        if mat[row][col]==0:
-            white +=1
-        else:
-            blue+=1
-        return
-    if mat[row][col] == mat[row-1][col] == mat[row][col-1] == mat[row-1][col-1]:
-        if mat[row][col]==0:
-            white +=1
-        else:
-            blue+=1
+    color = mat[row][col]
+    for i in range(row, row+m):
+        for j in range(col, col+m):         #m범위 내에 모든 mat을 순회
+            if color != mat[i][j]:
+                recursive(row, col, m//2)
+                recursive(row+m//2, col, m//2)
+                recursive(row, col+m//2, m//2)
+                recursive(row+m//2, col+m//2, m//2)
+                return                      #색깔이 하나라도 다를시 4개 영역으로 나눈뒤 종료
+                                #m은 1이되면 같은 영역을 한번 참고하므로 color == mat[i][j] -> 모든 색깔이 추가됨
+    if color==0:
+        white+=1
     else:
-        m=m//2
-        if m==0:
-            recursive(row - 1, col - 1, 0)
-            recursive(row, col - 1, 0)
-            recursive(row - 1, col, 0)
-            recursive(row, col, 0)
-        else:
-            recursive(row + m, col + m, m)
-            recursive(row + m, col - m, m)
-            recursive(row - m, col + m, m)
-            recursive(row - m, col - m, m)
+        blue+=1
 
-recursive(m, m, m)
+recursive(0,0, n)
 print(white)
-
 print(blue)
     
