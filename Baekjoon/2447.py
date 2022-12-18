@@ -18,7 +18,7 @@ def star(x, row):
         star(x, row+x)
         for _ in range(3):
             star(x, row + 2*x) 
-            
+                
 
 
 star(n, 0)
