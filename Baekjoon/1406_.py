@@ -1,36 +1,28 @@
 import sys
 
-cursor_left = list(input())
-cursor_right= []
-
+left = list(input())
+right = []
 n = int(input())
+# location = len(text)        #0은 왼쪽에 수가 없음 n은 오른쪽에 수가 없음
 
-cursor = len(cursor_left)-1
-# print(cursor)
-
-for _ in range(n):
+for i in range(n):
     command = list(sys.stdin.readline().split())
-    if command[0] == "L":
-        if len(cursor_left) == 0:
+    if command[0]=="L":
+        if not left:
             continue
         else:
-            cursor_right.append(cursor_left.pop())
-            cursor-=1
-    elif command[0] == "D":
-        if len(cursor_right) == 0:
+            right.append(left.pop())
+    elif command[0]=="D":
+        if not right:
             continue
         else:
-            cursor_left.append(cursor_right.pop())
-            cursor+=1
-    elif command[0] == "B":
-        if len(cursor_left)==0:
+            left.append(right.pop())
+    elif command[0]=="B":
+        if not left:
             continue
         else:
-            cursor_left.pop()
-    elif command[0] == "P":
-        cursor_left.append(command[1])
-
-cursor_right.reverse()
-result = cursor_left+cursor_right
-for i in result:
-    print(i, end="")
+            left.pop()
+    elif command[0]=="P":
+            left.append(command[1])
+right.reverse()
+print("".join(left+right))
