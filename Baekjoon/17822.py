@@ -2,7 +2,7 @@ from collections import deque
 
 N, M, T = map(int, input().split())     # N: 원판수, M: 원판 내 원소 수, T: 회전케이스 수
 mat = [[]for _ in range(N+1)]
-visited = [[False for _ in range(M)]for _ in range(N+1)]
+# visited = [[False for _ in range(M)]for _ in range(N+1)]
 dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
 
