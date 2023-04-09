@@ -15,17 +15,12 @@ cloud = [[N-1, 0], [N-1, 1], [N-2, 0], [N-2, 1]]
 for comm in range(len(command)):           #←, ↖, ↑, ↗, →, ↘, ↓, ↙ 
     visited = [[False]*N for _  in range(N)]
     dir, dist = command[comm]
-    # for i in mat:
-    #     print(i)
-    # print()
+
     for i in range(len(cloud)):
         cloud[i][0], cloud[i][1] = (cloud[i][0]+dx[dir-1]*dist)%N, (cloud[i][1] + dy[dir-1]*dist)%N
         mat[cloud[i][0]][cloud[i][1]]+=1
         visited[cloud[i][0]][cloud[i][1]]=True
-    # for i in mat:
-    #     print(i)
-    # print(cloud)
-    # print()
+
     for move in [1, 3, 5, 7]:
         for i in range(len(cloud)):
             row, col = cloud[i][0]+dx[move], cloud[i][1]+dy[move]
