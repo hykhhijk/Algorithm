@@ -8,14 +8,6 @@ fish = 0
 mat = []
 dx = [-1, 0, 1, 0]
 dy = [0, -1, 0, 1]
-def check(size):
-    for i in range(len(mat)):
-        for j in range(len(mat[i])):
-            if 0<mat[i][j]<size:
-                return True
-    return False
-
-
 
 def bfs(q):
     temp=[]
@@ -73,7 +65,6 @@ for _ in range(fish):
         mat[next[1]][next[2]]=0
         dist=next[0]
         queue = collections.deque([[next[1], next[2], size, next[0]]])
-        # bfs(collections.queue([next[1], next[1], size, dist]))
 if next==-1:
     print(dist)
 else:
