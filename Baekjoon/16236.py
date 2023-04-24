@@ -13,8 +13,6 @@ def bfs(q):
     temp=[]
     while q:
         row, col, size, dist = q.popleft()
-        # if temp and dist <= temp[-1][0]:
-        #     break
         for i in range(4):
             n_r, n_c = row+dx[i], col+dy[i]
             if n_r<0 or n_r>=N or n_c<0 or n_c>=N or visited[n_r][n_c]==True:
